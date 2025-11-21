@@ -13,17 +13,17 @@ export const metadata: Metadata = {
 export default async function Page({
   searchParams,
 }: {
-  searchParams?: {
-    query?: string;
-  };
+  searchParams: Promise<{ query?: string }>;
 }) {
-  const query = searchParams?.query || '';
+  // Await the searchParams Promise
+  const { query } = await searchParams;
+  const searchQuery = query || '';
 
   let customers: FormattedCustomersTable[];
 
   try {
     // Try to use fetchFilteredCustomers which should return customers with their invoice statistics
-    customers = await fetchFilteredCustomers(query);
+    customers = await fetchFilteredCustomers(searchQuery);
   } catch {
     // Fallback if fetchFilteredCustomers doesn't work
     const rawCustomers: CustomerField[] = await fetchCustomers();
