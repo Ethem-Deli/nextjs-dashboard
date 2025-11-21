@@ -24,7 +24,7 @@ export default async function Page({
   try {
     // Try to use fetchFilteredCustomers which should return customers with their invoice statistics
     customers = await fetchFilteredCustomers(query);
-  } catch (error) {
+  } catch {
     // Fallback if fetchFilteredCustomers doesn't work
     const rawCustomers: CustomerField[] = await fetchCustomers();
     
