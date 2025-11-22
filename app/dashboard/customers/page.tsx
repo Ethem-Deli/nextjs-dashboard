@@ -1,4 +1,3 @@
-// nextjs-dashboard\app\dashboard\customers\page.tsx
 import { Metadata } from 'next';
 import CustomersTable from '@/app/ui/customers/table';
 import CustomersTableSkeleton from '@/app/ui/customers/skeleton';
